@@ -6,9 +6,4 @@
     android:layout_height="match_parent"
     tools:context=".MainExo2">
 
-    <LinearLayout
-        android:id="@+id/rl2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,27 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainExo3">
+    tools:context=".MainExo2">
 
-    <RelativeLayout
-
+    <LinearLayout
+        android:id="@+id/rl2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteY="308dp">
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/rl1"
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="64dp"
+            android:layout_marginTop="44dp"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="Accéléromètre" />
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="443dp"
-                android:text="TextView" />
-        </LinearLayout>
+    </LinearLayout>
 
-    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

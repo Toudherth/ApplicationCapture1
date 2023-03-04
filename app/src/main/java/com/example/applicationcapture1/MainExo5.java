@@ -1,69 +1,118 @@
 package com.example.applicationcapture1;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.hardware.camera2.CameraAccessException;
+import android.hardware.camera2.CameraCharacteristics;
+import android.hardware.camera2.CameraDevice;
+import android.hardware.camera2.CameraManager;
+import android.os.Build;
 import android.os.Bundle;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class MainExo5 extends AppCompatActivity {
+public class MainExo4 extends AppCompatActivity  implements SensorEventListener{
 
-    ConstraintLayout cl;
-    TextView ProximitySensor, data;
-    ImageView iv;
-    SensorManager mySensorManager;
-    Sensor myProximitySensor;
+    private SensorManager mSensorManager;
+    private Sensor mAccelerometer;
+    private static final float SHAKE_THRESHOLD = 3.25f;
+    private static final int MIN_TIME_BETWEEN_SHAKES_MILLISECS = 1000;
+    private long mLastShakeTime;
+    private CameraManager cameraManager;
+    String cameraId;
+    TextView tv_title;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_exo5);
+        setContentView(R.layout.activity_main_exo4);
 
-        ProximitySensor = (TextView) findViewById(R.id.textView);
-        data = (TextView) findViewById(R.id.textView2);
-        iv = (ImageView) findViewById(R.id.imageView);
+        mSensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
+        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
+        tv_title = findViewById(R.id.text_title);
 
-        mySensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        myProximitySensor = mySensorManager.getDefaultSensor(
-                Sensor.TYPE_PROXIMITY);
-        if (myProximitySensor == null) {
-            ProximitySensor.setText("No Proximity Sensor!");
-        } else {
-            mySensorManager.registerListener(proximitySensorEventListener, myProximitySensor, SensorManager.SENSOR_DELAY_NORMAL);
+        if (mAccelerometer != null) {
+            mSensorManager.registerListener((SensorEventListener) this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
         }
 
+        cameraManager = (CameraManager)
+                getSystemService(Context.CAMERA_SERVICE);
+        try {
+            cameraId = cameraManager.getCameraIdList()[0];
+        } catch (CameraAccessException e) {
+            e.printStackTrace();
+        }
     }
 
-    SensorEventListener proximitySensorEventListener
-            = new SensorEventListener() {
 
-        @Override
-        public void onSensorChanged(SensorEvent event) {
-            // TODO Auto-generated method stub
-            if (event.sensor.getType() == Sensor.TYPE_PROXIMITY) {
-                if (event.values[0] == 0) {
-                    data.setText("Near");
-                    iv.setImageDrawable(getDrawable(R.drawable.pexle));
-                } else {
-                    data.setText("Away");
-                    iv.setImageDrawable(getDrawable(R.drawable.tree));
+
+    protected void onResume() {
+        super.onResume();
+        mSensorManager.registerListener((SensorEventListener) this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    protected void onPause() {
+        super.onPause();
+        mSensorManager.unregisterListener((SensorEventListener) this);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+
+
+        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+            long curTime = System.currentTimeMillis();
+            if ((curTime - mLastShakeTime) > MIN_TIME_BETWEEN_SHAKES_MILLISECS) {
+
+                float x = event.values[0];
+                float y = event.values[1];
+                float z = event.values[2];
+
+                double acceleration = Math.sqrt(Math.pow(x, 2) +
+                        Math.pow(y, 2) +
+                        Math.pow(z, 2)) - SensorManager.GRAVITY_EARTH;
+                if (acceleration > SHAKE_THRESHOLD) {
+                    mLastShakeTime = curTime;
+                    Boolean light = true;
+                    if (light) {
+                        try {
+                            cameraManager.setTorchMode(cameraId, true);
+                            System.out.println("CAMERA ON CAMERA ON CAMERA ON");
+                            tv_title.setText("CAMERA ON");
+                            Toast.makeText(this, "CAMERA ON", Toast.LENGTH_LONG).show();
+                        } catch (CameraAccessException e) {
+                            e.printStackTrace();
+                        }
+                        light = false;
+                    } else {
+                        try {
+                            cameraManager.setTorchMode(cameraId, false);
+                            System.out.println("CAMERA OFF CAMERA OFF CAMERA OFF");
+                            tv_title.setText("CAMERA OFF");
+                            Toast.makeText(this, "CAMERA OFF", Toast.LENGTH_LONG).show();
+                        } catch (CameraAccessException e) {
+                            e.printStackTrace();
+                        }
+
+                        light = true;
+                    }
                 }
             }
         }
+    }
 
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
-        @Override
-        public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
-        }
-
-    };
+    }
 }
