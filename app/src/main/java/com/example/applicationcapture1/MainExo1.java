@@ -14,10 +14,8 @@ import java.util.List;
 public class MainExo1 extends AppCompatActivity {
 
     // recuperer une instance de service
-    // les captures
     private SensorManager sensorManager ; //= (SensorManager) getSystemService(Context.SENSOR_SERVICE);
     // la liste des captures
-    private Capteur accelerometre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

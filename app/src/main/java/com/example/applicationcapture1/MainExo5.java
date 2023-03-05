@@ -9,16 +9,13 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.hardware.camera2.CameraAccessException;
-import android.hardware.camera2.CameraCharacteristics;
-import android.hardware.camera2.CameraDevice;
 import android.hardware.camera2.CameraManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainExo4 extends AppCompatActivity  implements SensorEventListener{
+public class MainExo5 extends AppCompatActivity  implements SensorEventListener{
 
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
@@ -33,7 +30,7 @@ public class MainExo4 extends AppCompatActivity  implements SensorEventListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_exo4);
+        setContentView(R.layout.activity_main_exo5);
 
         mSensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);

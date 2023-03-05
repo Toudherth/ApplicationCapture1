@@ -3,26 +3,17 @@ package com.example.applicationcapture1;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.hardware.camera2.CameraAccessException;
-import android.hardware.camera2.CameraCharacteristics;
-import android.hardware.camera2.CameraDevice;
-import android.hardware.camera2.CameraManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.List;
-
-public class MainExo2 extends AppCompatActivity implements SensorEventListener{
+public class MainExo3 extends AppCompatActivity implements SensorEventListener{
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
     protected TextView tv;
@@ -32,7 +23,7 @@ public class MainExo2 extends AppCompatActivity implements SensorEventListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_exo2);
+        setContentView(R.layout.activity_main_exo3);
 
 
         mSensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);

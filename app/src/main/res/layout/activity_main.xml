@@ -7,98 +7,115 @@
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:id="@+id/form_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:padding="20dp"
+        tools:ignore="MissingConstraints">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="590dp"
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="10dp"
+        app:cardUseCompatPadding="true">
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="312dp"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Afficher" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="La liste des captures disponble :" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="vertical">
 
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="83dp"
-                android:orientation="horizontal">
+                android:layout_height="64dp"
+                android:layout_marginTop="44dp"
+                android:gravity="center"
+                android:text="Les Capteurs"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-                <Button
-                    android:id="@+id/button2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
-
-                <Button
-                    android:id="@+id/button3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
-
-            </LinearLayout>
-
-            <LinearLayout
+            <Space
                 android:layout_width="match_parent"
-                android:layout_height="178dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_height="23dp" />
 
-                <Button
-                    android:id="@+id/button4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
-
-                <Button
-                    android:id="@+id/button5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
-
-            </LinearLayout>
-
-            <LinearLayout
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:backgroundTint="#6D7B8D"
+                android:text="Liste Capteurs"
+                android:textSize="16sp" />
+            <Space
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_height="10dp" />
 
-                <Button
-                    android:id="@+id/button6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:backgroundTint="#6D7B8D"
+                android:text="Capteur existe/Non"
+                android:textSize="16sp" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
 
-                <Button
-                    android:id="@+id/button7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Button" />
-            </LinearLayout>
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:backgroundTint="#6D7B8D"
+                android:text="Accéléromètre" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:backgroundTint="#6D7B8D"
+                android:text="Direction" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:backgroundTint="#6D7B8D"
+                android:text="Secouer un appareil" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:backgroundTint="#6D7B8D"
+                android:text="Proximité" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <Button
+                android:id="@+id/button7"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:backgroundTint="#6D7B8D"
+                android:text="Geolocalisation" />
         </LinearLayout>
 
+    </androidx.cardview.widget.CardView>
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

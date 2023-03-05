@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:cardBackgroundColor="@color/griscolor"
-    tools:context=".MainExo5">
+    tools:context=".MainExo6">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardview_example"

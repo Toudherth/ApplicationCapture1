@@ -10,19 +10,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ApplicationCapture1">
         <activity
+            android:name=".MainExo2"
+            android:exported="true" />
+        <activity
+            android:name=".MainExo7"
+            android:exported="true" />
+        <activity
+            android:name=".MainExo6"
+            android:exported="true" />
+        <activity
             android:name=".MainExo5"
             android:exported="true" />
         <activity
             android:name=".MainExo4"
             android:exported="true" />
         <activity
-            android:name=".MainExo3"
-            android:exported="true" />
-        <activity
             android:name=".MainExo1"
             android:exported="true" />
         <activity
-            android:name=".MainExo2"
+            android:name=".MainExo3"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
@@ -34,14 +40,14 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 </manifest>
